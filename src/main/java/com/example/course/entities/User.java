@@ -1,19 +1,28 @@
 package com.example.course.entities;
 
+
+import javax.persistence.*;
 import java.io.Serializable;
 
+@Entity
 public class User implements Serializable {
 
     private static final Long SerialVersionUID = 1L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column
     private String name;
 
+    @Column
     private String email;
 
+    @Column
     private String phone;
 
+    @Column
     private String password;
 
     public User() {
