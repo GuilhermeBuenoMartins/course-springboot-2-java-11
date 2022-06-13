@@ -2,18 +2,23 @@ package com.example.course.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_category")
 public class Category implements Serializable {
 
-    private static final Long serialVerisonUID = 1L;
+    private static final long serialVerisonUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
+
+    @Transient
+    private Set<Product> producties = new HashSet<>();
 
     public Category() {
     }
@@ -37,6 +42,10 @@ public class Category implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Set<Product> getProducties() {
+        return producties;
     }
 
     @Override
